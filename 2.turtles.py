@@ -126,41 +126,37 @@ turty.end_fill()
 
 
 
-def koch(t, length):
-
-    dec = 1 
-    
-    if length <= 10:
-        t.fd(2)
-    
-    else:
-                
-        koch(t, length - dec)
-        t.left(60)
+def koch_rec(t, level, size): 
         
-        koch(t, length - dec)
-        t.right(120)
+    if level <= 1:
+        t.fd(size)   
+    else:               
+        koch_rec(t, level - 1, size)
+        t.left(60)      
+        koch_rec(t, level - 1, size)
+        t.right(120)       
+        koch_rec(t, level - 1, size)
+        t.left(60) 
+        koch_rec(t, level - 1, size)
         
-        koch(t, length - dec)
-        t.left(60)
-        
-        koch(t, length - dec)
-    
-
-turty.reset()
-koch(turty, 20)
-
-      
-      
+def koch(t, level, size):
    
-turty = turtle.Turtle()
-# turtle.pensize(5)
-turty.speed(10)
+
+    t.speed(0)
     
-kochLevel = 3
-length = 20
+    t.penup()
+    t.goto(-300, 150)   
+    t.pendown()    
+    
+    for i in range(3):
+        koch_rec(t, level, size)
+        turty.right(120)
+        
+ 
+turty = turtle.Turtle() 
 
 turty.reset()
+koch(turty, 6, 1)
  
 
 
