@@ -141,7 +141,6 @@ def koch_rec(t, level, size):
         
 def koch(t, level, size):
    
-
     t.speed(0)
     
     t.penup()
@@ -158,7 +157,34 @@ turty = turtle.Turtle()
 turty.reset()
 koch(turty, 6, 1)
  
+ 
+ # Snowflake
+def snowflake_rec(t, size, x):
+    
+    t.right(60)
+    t.fd(50 * size)
+    t.bk(20 * size)
+    t.left(60)
+    t.fd(20 * size)
+    t.bk(20 * size)
+    t.right(120)
+    t.fd(20 * size)
+    t.bk(20 * size)
+    t.left(60)
+    t.bk(30 * size)
+    
+    if x != 0:
+        snowflake_rec(t, size, x - 1)
 
 
+
+#t = turtle.Turtle() 
+
+
+t.reset()
+
+
+
+snowflake_rec(t, 4, 5)
 
 
